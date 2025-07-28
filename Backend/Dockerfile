@@ -4,7 +4,7 @@ FROM node:18
 WORKDIR /app
 
 # Copy only package.json and package-lock.json to workdir
-COPY ..
+COPY . .
 
 # Install dependencies
 RUN npm install
