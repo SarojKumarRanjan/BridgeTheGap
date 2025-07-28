@@ -1,17 +1,19 @@
-FROM node:18
+
+# Use Node.js as base image
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy only package.json and package-lock.json to workdir
-COPY . .
-
-# Install dependencies
+# Copy package.json and install dependencies
+COPY package*.json ./
 RUN npm install
 
+# Copy the rest of the backend files
+COPY . .
 
-# Expose app port
+# Expose backend port
 EXPOSE 3000
 
-# Run app in development mode
+# Start the server
 CMD ["npm", "run", "dev"]
