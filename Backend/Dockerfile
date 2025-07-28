@@ -4,13 +4,11 @@ FROM node:18
 WORKDIR /app
 
 # Copy only package.json and package-lock.json to workdir
-COPY package.json ./
+COPY ..
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the app
-COPY . .
 
 # Expose app port
 EXPOSE 3000
