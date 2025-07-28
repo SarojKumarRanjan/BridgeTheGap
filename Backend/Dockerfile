@@ -1,18 +1,19 @@
-
 FROM node:18
 
-
+# Set working directory
 WORKDIR /app
 
+# Copy only package.json and package-lock.json to workdir
+COPY package*.json ./
 
-COPY package*.json ./app
+# Install dependencies
 RUN npm install
 
-
+# Copy the rest of the app
 COPY . .
 
-
+# Expose app port
 EXPOSE 3000
 
-
-CMD ["npm","run", "dev"]
+# Run app in development mode
+CMD ["npm", "run", "dev"]
